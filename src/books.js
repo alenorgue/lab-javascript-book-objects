@@ -43,12 +43,14 @@ title: 'The Art of Learning',
 // Your code here:
 const booksArray = [book1, book2, book3, book4];
 
-
+console.log (booksArray); 
 
 
 // Iteration 2 | Book Details
-function getBookDetails() {
+function getBookDetails(book) {
   // Your code here:
+
+  return `${book.title} - ${book.author} - ${book.pages} pages`;
 
 }
 
@@ -56,16 +58,20 @@ function getBookDetails() {
 
 // Iteration 3 | Delete Language
 // Your code here:
+for (let book of booksArray) { 
+  delete book.details.language;
+}
 
-
-
+console.log (booksArray); 
 
 // Iteration 4 | Estimated Reading Time
 // Your code here:
 
+for (let book of booksArray) { 
+  book.readingTime = Math.ceil((book.pages * 500) / 90); 
+}
 
-
-
+console.log(booksArray); 
 // Bonus: Iteration 5 | Books Dictionary
 
 /* The `dictionary` is an object containing books grouped by author. 
@@ -89,11 +95,25 @@ const dictionary = {
   ],
 };
 
-function booksByAuthor() {
+function booksByAuthor(dictionary) {
   // Your code here:
 
+let booksArray = [];
+let authors = Object.keys(dictionary);
+
+for (let author of authors) {
+ for  (let book of dictionary[author]) {
+  booksArray.push({
+    title: book[0],
+    pages: book[1],
+    author: author
+});
+ }
+}
+return booksArray;
 }
 
+console.log(booksByAuthor(dictionary));
 
 
 // Bonus: Iteration 6 | Average Page Count
